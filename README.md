@@ -1,5 +1,4 @@
 - 👋 Hi, I’m @rheijmen
-- 👀 I’m interested in Design, creativity, Tesla, UX and AI
-- 🌱 I’m currently learning basic programming and AI
+- 👀 I’m interested in Design, creativity, Technology, UX and AI
 - 💞️ I’m looking to collaborate with technology and people to help me realize my ideas
 - 📫 How to reach me rik.heijmen@gmail.com

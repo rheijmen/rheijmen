@@ -1,0 +1,230 @@
+/* Basic styles for Power Hour App */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px; /* Adjusted margin */
+    margin-bottom: 30px;
+}
+
+/* Tab Styles */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px; /* Added margin top for spacing from edge */
+}
+
+.tabs button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    margin: 0 5px;
+    border-radius: 5px 5px 0 0; /* Rounded top corners */
+    transition: background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.tabs button.active {
+    background-color: #ddd; /* Active tab background */
+    border-bottom-color: #ddd; /* Make bottom border same as background */
+}
+
+.tabs button:not(.active):hover {
+    background-color: #efefef;
+}
+
+
+h2 {
+    text-align: center;
+    color: #555;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Loading Indicator Styles */
+#loading-indicator {
+    display: none; /* Hidden by default */
+    width: 60px;
+    height: 60px;
+    background-color: #FFDE00; /* Sun yellow */
+    border-radius: 50%;
+    margin: 40px auto; /* Centered, with more margin to stand out */
+    position: relative;
+    box-shadow: 0 0 20px rgba(255, 222, 0, 0.7);
+    animation: pulse 1.5s ease-in-out infinite, spin 10s linear infinite;
+}
+
+#loading-indicator::before,
+#loading-indicator::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 25px; /* Ray length */
+    background-color: #FFDE00; /* Sun yellow */
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    transform-origin: 50% 0%; /* Rotate around the base of the ray */
+}
+
+/* Position rays around the sun */
+#loading-indicator::before {
+    transform: translate(-50%, -100%) rotate(0deg); /* Top ray */
+    animation: ray-spin 10s linear infinite;
+}
+
+#loading-indicator::after { /* This will represent multiple rays via box-shadow trick or multiple elements if needed */
+    /* For simplicity, we'll make a few distinct rays. More can be added. */
+    /* Ray 2 */
+    transform: translate(-50%, -100%) rotate(45deg);
+    animation: ray-spin 10s linear infinite reverse; /* Spin opposite for visual effect */
+}
+
+/* Adding more rays using pseudo-elements is limited. 
+   A more complex ray system might use more divs or SVG.
+   Here's a simplified way to add more rays by adding more pseudo elements or styling the main one.
+   For this example, we'll keep it to two main pseudo-elements creating 4 rays by their shape or use box-shadow for more.
+   Let's use box-shadow on the main indicator for some static "glow" rays to simplify.
+*/
+#loading-indicator.show {
+    display: block; /* Make visible when loading */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 15px rgba(255, 222, 0, 0.5); transform: scale(1); }
+    50% { box-shadow: 0 0 25px rgba(255, 222, 0, 1); transform: scale(1.1); }
+    100% { box-shadow: 0 0 15px rgba(255, 222, 0, 0.5); transform: scale(1); }
+}
+
+/* Keyframes for individual ray movements (optional, can be complex) */
+/* For now, the main sun body spins, and the pulse gives it life. The rays are static relative to the spinning body */
+
+
+#error-message {
+    text-align: center;
+    margin: 20px;
+    font-size: 1.1em;
+}
+
+#status-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 2em;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.5s ease;
+}
+
+#status-text {
+    /* Text is directly centered by flex properties of parent */
+    font-size: 1.5em; /* Slightly adjust main status text if timer is present */
+    margin-bottom: 5px; /* Add some space if timer is below */
+}
+
+#timer-label {
+    font-size: 0.5em; /* Smaller text for the label */
+    margin-bottom: 2px; /* Space between label and timer value */
+}
+
+#status-timer {
+    font-size: 0.8em; /* Smaller text for the timer value */
+    font-weight: normal;
+}
+
+/* Adjust status-circle to accommodate more text if needed */
+#status-circle {
+    width: 180px; /* Slightly wider to accommodate timer text better */
+    height: 180px;
+    flex-direction: column; /* Stack text, label, and timer vertically */
+}
+
+.status-nu {
+    background-color: lightgreen;
+    color: darkgreen;
+}
+
+.status-over {
+    background-color: lightyellow;
+    color: #b09000; /* Darker yellow for text */
+}
+
+.status-nee {
+    background-color: lightcoral;
+    color: darkred;
+}
+
+#power-hour-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    max-width: 300px; /* Constrain width for better readability */
+    margin: 0 auto;
+}
+
+#power-hour-list li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#power-hour-list li:last-child {
+    margin-bottom: 0;
+}
+
+.active-power-hour {
+    background-color: #e6ffe6; /* Light green background */
+    font-weight: bold;
+    border-left: 5px solid darkgreen;
+}
+
+.next-power-hour {
+    background-color: #fff3e0; /* Light orange background */
+    font-weight: bold; /* Make the text bold */
+    border-left: 5px solid orange;
+}
+
+.next-power-hour .next-label { /* Style for the span if used */
+    background-color: orange;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 8px;
+    font-weight: normal; /* Reset font-weight for the label itself if parent is bold */
+}
+
+.active-power-hour .active-label { /* Style for the span if used */
+    background-color: darkgreen;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 8px;
+    font-weight: normal;
+}

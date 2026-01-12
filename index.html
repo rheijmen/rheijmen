@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Hour App</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="tabs">
+        <button id="tab-today" class="active">Vandaag</button>
+        <button id="tab-tomorrow">Morgen</button>
+    </div>
+    <h1>Is het al Power Hour?</h1>
+    <div id="loading-indicator"></div>
+    <div id="status-circle">
+        <div id="status-text"></div>
+        <div id="timer-label"></div>
+        <div id="status-timer"></div>
+    </div>
+    <h2>Power Hour tijden:</h2>
+    <ul id="power-hour-list"></ul>
+    <div id="error-message"></div>
+    <!-- data-container is removed as its functionality is replaced by specific elements -->
+    <script src="static/js/app.js"></script>
+
+    <div id="debug-controls" style="position: fixed; bottom: 10px; right: 10px; background: #f0f0f0; padding: 10px; border: 1px solid #ccc; z-index: 1000;">
+        <label for="dummy-data-toggle">Use Dummy Data: </label>
+        <input type="checkbox" id="dummy-data-toggle">
+    </div>
+</body>
+</html>

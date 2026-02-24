@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# React Native
+.metro-health-check*
+android/app/build/
+android/.gradle/
+ios/Pods/
+ios/build/
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Testing
+coverage/
+
+# Firebase
+google-services.json
+GoogleService-Info.plist
